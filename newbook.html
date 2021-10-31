@@ -3,8 +3,52 @@
 <head>
     <meta charset="UTF-8">
     <title>建立新書籍</title>
+    <script>
+        function checkForm(){
+            var year= document.getElementById("bookyear").value;
+            var stack= document.getElementById("bookstack").value;
+            if(year > 2021){
+                alert("Please input valid published year (<=2021)")
+                return false;
+            }
+            else if(stack <= 0){
+                alert("Please input valid stack (>0)")
+                return false;
+            }
+            alert("Submission Successful")
+            document.getElementById("form").submit();
+
+            return true;
+        }
+    </script>
 </head>
 <body>
+<h1>上架新書籍</h1>
+<form id="form" action="success.html" method="post" onsubmit="return checkForm()">
+    請輸入書本名稱
+    <input type="text" name="bookname" placeholder="必填" required>
+    <br>
+    請輸入書本作者
+    <input type="text" name="bookauthor" placeholder="必填" required>
+    <br>
+    請輸入書本出版社
+    <input type="text" name="bookpublish" placeholder="必填" required>
+    <br>
+    請輸入書本出版年
+    <input type="text" name="bookyear" id="bookyear" placeholder="必填" required pattern="[0-9]{4}" title="输入4位年分">
+    <br>
+    請輸入書本庫存
+    <input type="text" name="bookstack" id="bookstack" placeholder="必填" required pattern="[0-9]" title="输入數字">
+    <br>
+    請上傳書本圖片
+    <input type="file" />
+    <br>
+    <br><br>
+    <input type="submit" value="submit">
+    <!-- <button type="submit" onclick=change()>Submit</button> onclick="checkForm();-->
+</form>
+<p id="sub"></p>
 
 </body>
+
 </html>
